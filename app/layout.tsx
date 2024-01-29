@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import DarkMode from "@/components/DarkMode";
+import Navigation, { NavItem } from "@/components/Navigation";
+import { Home } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +26,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Navigation>
+            <NavItem icon={<Home size={20} />} path="Home" />
+            <NavItem icon={<Home size={20} />} path="Home" alert />
+            <NavItem icon={<Home size={20} />} path="Home" />
+          </Navigation>
         </DarkMode>
       </body>
     </html>
