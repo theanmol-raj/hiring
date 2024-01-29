@@ -4,6 +4,7 @@ import "./globals.css";
 import DarkMode from "@/components/DarkMode";
 import Navigation, { NavItem } from "@/components/Navigation";
 import { Home } from "lucide-react";
+import DarkModeSwitch from "@/components/DarkModeSwitch";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
             <NavItem icon={<Home size={20} />} path="Home" />
             <NavItem icon={<Home size={20} />} path="Home" alert />
             <NavItem icon={<Home size={20} />} path="Home" />
+            <DarkModeSwitch />
           </Navigation>
         </DarkMode>
       </body>
