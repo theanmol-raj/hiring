@@ -1,13 +1,12 @@
 
-import React from 'react'
+import React ,{ useState} from 'react'
 
-type Props = {}
 
 function page({params : { userId}} : { params : { userId  : string}}) {
     
   return (
     <div>
-NO SHRYA
+      NO SHRYA 
     </div>
   )
 }
