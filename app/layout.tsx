@@ -18,9 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <DarkMode defaultTheme="dark"
-      attribute="class"
-      disableTransitionOnChange>{children}</DarkMode>  
+        <DarkMode
+          defaultTheme="dark"
+          attribute="class"
+          disableTransitionOnChange
+        >
+          {children}
+        </DarkMode>
       </body>
     </html>
   );
