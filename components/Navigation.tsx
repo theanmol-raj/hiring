@@ -29,7 +29,7 @@ export function NavItem({
       `}
     >
       <div className=" justify-center">
-        <div className=" max-w-max mx-auto dark:group-hover:text-black">{icon}</div>
+        <div className=" max-w-max mx-auto text-gray-700 dark:text-gray-200  dark:group-hover:text-black">{icon}</div>
       </div>
       {alert && (
         <div
@@ -56,7 +56,7 @@ export function NavItem({
 function Navigation({ children }: { children: React.ReactNode }) {
   const expanded = true;
   return (
-    <div className=" fixed z-50 bottom-0 w-full md:max-w-lg md:rounded-full md:left-1/2 md:-translate-x-1/2 md:bottom-3 p-2 px-6 border">
+    <div className="sticky md:fixed z-50 bottom-0 w-full bg-white dark:bg-black  md:max-w-lg md:rounded-full md:left-1/2 md:-translate-x-1/2 md:bottom-3 p-2 px-6 border">
       <NavbarContext.Provider value={expanded}>
         <ul className="flex-1 px-3 flex  space-x-4">{children}</ul>
       </NavbarContext.Provider>

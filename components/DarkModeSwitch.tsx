@@ -1,12 +1,15 @@
 'use client'
 
 import { useTheme } from "next-themes"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function DarkModeSwitch() {
     
     const {theme ,setTheme} = useTheme();
-    const [ currentTheme ,setThemeHandler] = useState<boolean>(theme === 'light')
+    const [ currentTheme ,setThemeHandler] = useState<boolean>(true)
+    useEffect(()=>{
+        setTheme('light')
+    },[])
 
   return (
     <button className="...style goes here " onClick={() => {
