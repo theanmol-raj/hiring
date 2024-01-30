@@ -1,6 +1,21 @@
 "use client";
-import { BadgeCheck, Briefcase, Check, CircleUserRound, Compass, Flag, GraduationCap, X, Zap } from "lucide-react";
+import { BadgeCheck, Briefcase, Check, Award, Link, CircleUserRound, Compass, Flag, GraduationCap, X, Zap } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
+
 import React, { useState } from "react";
+import { Button } from "./ui/button";
 
 interface typeTouchConfig {
   touchStart: any;
@@ -74,7 +89,7 @@ function Profile() {
       <div className=" pt-3.5 md:hidden bg-yellow-500/10 rounded-b-md p-4">
             <p className=" text-sm font-semibold">About Me</p>
             <p className=" text-xs"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was </p>
-          </div>
+      </div>
       <div className=" w-full md:p-2 py-2 flex flex-col gap-2">
           <div className=" bg-gradient-to-t from-blue-200 via-blue-300 to-blue-300 rounded-md text-blue-800 p-8">
             <div className=" flex">
@@ -114,6 +129,87 @@ function Profile() {
               </p>
             </div>
           </div>
+        </div>
+        <div>
+        <Tabs defaultValue="wexp" className="w-full">
+          <TabsList className="flex justify-between md:justify-start md:gap-x-4">
+            <TabsTrigger value="wexp">Work Experience</TabsTrigger>
+            <TabsTrigger value="proj">Projects</TabsTrigger>
+            <TabsTrigger value="achi">Achievements</TabsTrigger>
+            
+          </TabsList>
+          <TabsContent value="wexp">
+          <div className=" bg-white border-gray-200 border-[1px] rounded-lg px-8 py-4 h-[490px] md:h-[350px]">
+              <div className="py-2 h-20">
+              <p className="text-sm font-semibold">Developer Role</p>
+              <p className="text-black/90 font-semibold text-xs">
+                Some Organisation 
+              </p>
+              <p className="text-black/30 text-xs">
+                Date  
+              </p>
+              <p className="text-black/30 text-xs">
+                Remote
+              </p>
+              </div>
+              <hr />
+              <div className="py-2 h-20">
+              <p className="text-sm font-semibold">Developer Role</p>
+              <p className="text-black/90 font-semibold text-xs">
+                Some Organisation 
+              </p>
+              <p className="text-black/30 text-xs">
+                Date  
+              </p>
+              <p className="text-black/30 text-xs">
+                Remote
+              </p>
+              </div>
+              <hr />
+          </div>
+          </TabsContent>
+          <TabsContent value="proj">
+            <div className=" bg-white border-gray-200 border-[1px] rounded-lg px-8 py-4 h-[490px] md:h-[350px]">
+            <div className="pt-2 h-20">
+              <div className="flex flex-row">
+                <Link size={15} className="mr-1 cursor-pointer"/>
+                <p className="text-sm font-semibold cursor-pointer">Discord Clone</p>
+              </div>
+              <p className="text-black/90 font-semibold text-xs">
+                Explaination is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500
+              </p>
+            </div>
+            <hr />
+            </div>
+          </TabsContent>
+          <TabsContent value="achi">
+            <div className=" bg-white border-gray-200 border-[1px] rounded-lg px-8 py-4 h-[490px] md:h-[350px] flex flex-col justify-center items-center">
+            <div className="flex flex-row">
+              <Award size={20} />
+              <p className="text-black/50 text-sm font-semibold">Show off your Achievements and Certifications</p>
+            </div>
+            <AlertDialog>
+            <AlertDialogTrigger>
+              <Button className=""> Add + </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete your account
+                  and remove your data from our servers.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>Continue</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+
+            </div>
+          </TabsContent>
+        </Tabs>
         </div>
 
 
