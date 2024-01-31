@@ -12,6 +12,7 @@ import {
   GraduationCap,
   X,
   Zap,
+  Crosshair,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -84,9 +85,6 @@ function Profile() {
   
   
   }
-
-    console.log(touch)
-    ;
 
   const onTouchEnd = (e :  React.TouchEvent<HTMLDivElement>) => {
     const {direction} = touch;
@@ -521,9 +519,10 @@ function Profile() {
         
       </div>
 
-      <div className=" flex">
-        <button><X /></button>
-        <button><Check /></button>
+      <div className=" hidden md:flex items-center justify-center py-24 pb-32 space-x-4">
+        <button className=" border p-6 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500  "><X /></button>
+        <button className=" border p-6 -mt-24 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500 "><Crosshair /></button>
+        <button className=" border p-6 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500 "><Check /></button>
 
       </div>
     </div>
