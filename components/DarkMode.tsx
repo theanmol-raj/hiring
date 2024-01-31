@@ -9,7 +9,7 @@ import DarkModeSwitch from "./DarkModeSwitch";
 function DarkMode({ children, ...props }: ThemeProviderProps) {
   return (
     <NextThemesProvider {...props}>
-      <div className="flex flex-col h-screen max-w-5xl border-x mx-auto">
+      <div className="flex flex-col h-screen max-w-6xl border-x mx-auto">
         <Header />
         {children}
         <Navigation>
