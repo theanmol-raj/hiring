@@ -25,6 +25,7 @@ function JobCard({swipe} : {swipe ?: boolean}) {
   const [touch, setTouch] = useState<typeTouchConfigJob>(touchConfig);
 
   const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if(!swipe) return;
     const { clientX } = e.targetTouches[0];
     setTouch((prev: typeTouchConfigJob) => ({
       ...prev,
@@ -34,6 +35,7 @@ function JobCard({swipe} : {swipe ?: boolean}) {
   };
 
   const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if(!swipe) return;
     const { clientX } = e.targetTouches[0];
     setTouch((prev: typeTouchConfigJob) => ({
       ...prev,
@@ -58,6 +60,7 @@ function JobCard({swipe} : {swipe ?: boolean}) {
   };
 
   const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if(!swipe) return;
     const { direction } = touch;
     if (direction) {
       setTouch((prev: typeTouchConfigJob) => ({
