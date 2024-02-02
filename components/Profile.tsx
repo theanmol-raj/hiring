@@ -34,8 +34,8 @@ interface typeTouchConfig {
   touchStart: number | null;
   touchEnd: number | null;
   minSwipe: number;
-  detectedSwipe : boolean,
-  direction : 'left' | 'right' | null,
+  detectedSwipe: boolean;
+  direction: "left" | "right" | null;
 }
 
 function Profile() {
@@ -43,12 +43,12 @@ function Profile() {
     touchEnd: null,
     touchStart: null,
     minSwipe: 40,
-    detectedSwipe : false,
-    direction :null,
+    detectedSwipe: false,
+    direction: null,
   };
   const [touch, setTouch] = useState<typeTouchConfig>(touchConfig);
 
-  const onTouchStart = (e:  React.TouchEvent<HTMLDivElement>) => {
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     const { clientX } = e.targetTouches[0];
     setTouch((prev: typeTouchConfig) => ({
       ...prev,
@@ -57,57 +57,65 @@ function Profile() {
     }));
   };
 
-  const onTouchMove = (e:  React.TouchEvent<HTMLDivElement>) =>{
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const { clientX } = e.targetTouches[0];
     setTouch((prev: typeTouchConfig) => ({
       ...prev,
       touchEnd: clientX,
-
-    }))
+    }));
     const { touchStart, touchEnd, minSwipe } = touch;
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipe;
     const isRightSwipe = distance < -minSwipe;
-    if (isLeftSwipe || isRightSwipe){
+    if (isLeftSwipe || isRightSwipe) {
       setTouch((prev: typeTouchConfig) => ({
         ...prev,
-        direction : isLeftSwipe? 'left' : isRightSwipe ? 'right' : null
-      }))
-    }else{
+        direction: isLeftSwipe ? "left" : isRightSwipe ? "right" : null,
+      }));
+    } else {
       setTouch((prev: typeTouchConfig) => ({
         ...prev,
-        direction : null
-      }))
-
+        direction: null,
+      }));
     }
-  
-  
-  
-  }
+  };
 
-  const onTouchEnd = (e :  React.TouchEvent<HTMLDivElement>) => {
-    const {direction} = touch;
-    if (direction){
+  const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    const { direction } = touch;
+    if (direction) {
       setTouch((prev: typeTouchConfig) => ({
         ...prev,
-        detectedSwipe :true
-      }))
-    }else{
-      setTouch(touchConfig)
+        detectedSwipe: true,
+      }));
+    } else {
+      setTouch(touchConfig);
     }
 
-    // actual swipe logic comes here 
+    // actual swipe logic comes here
   };
   return (
     <div
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      className={` w-full h-full transform duration-500 ease-in-out ${touch.detectedSwipe && touch.direction === 'left'  ? ' -translate-x-full  overflow-hidden' : touch.detectedSwipe && touch.direction === 'right' ? ' translate-x-full overflow-hidden' : '' }  ${!touch.detectedSwipe && touch.direction === 'left'  ? ' -translate-x-1/2 -rotate-12 overflow-hidden' : !touch.detectedSwipe && touch.direction === 'right' ? ' translate-x-1/2 rotate-12 overflow-hidden' : '' } `}
+      className={` w-full h-full transform duration-500  ease-in-out ${
+        touch.detectedSwipe && touch.direction === "left"
+          ? " -translate-x-full   overflow-hidden"
+          : touch.detectedSwipe && touch.direction === "right"
+          ? " translate-x-full overflow-hidden "
+          : ""
+      }  ${
+        !touch.detectedSwipe && touch.direction === "left"
+          ? " -translate-x-1/2 -rotate-12 overflow-hidden"
+          : !touch.detectedSwipe && touch.direction === "right"
+          ? " translate-x-1/2 rotate-12 overflow-hidden"
+          : ""
+      } `}
     >
       <div className=" h-full relative md:hidden">
         <img
+          alt=""
           className=" h-full w-full object-cover"
           src="https://media.licdn.com/dms/image/D4D03AQFMdduotOpucQ/profile-displayphoto-shrink_800_800/0/1696180126571?e=1712188800&v=beta&t=SgsSNG9IUtGVebS_l64txlqOVvl3Zbfot_iAtDHuw-0"
         />
@@ -514,16 +522,19 @@ function Profile() {
               />
             </div>
           </div>
-          
         </div>
-        
       </div>
 
       <div className=" hidden md:flex items-center justify-center py-24 pb-32 space-x-4">
-        <button className=" border p-6 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500  "><X /></button>
-        <button className=" border p-6 -mt-24 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500 "><Crosshair /></button>
-        <button className=" border p-6 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500 "><Check /></button>
-
+        <button className=" border p-6 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500  ">
+          <X />
+        </button>
+        <button className=" border p-6 -mt-24 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500 ">
+          <Crosshair />
+        </button>
+        <button className=" border p-6 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-600/50 hover:bg-yellow-500 ">
+          <Check />
+        </button>
       </div>
     </div>
   );

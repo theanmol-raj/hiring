@@ -56,7 +56,7 @@ export function NavItem({
 function Navigation({ children }: { children: React.ReactNode }) {
   const expanded = true;
   return (
-    <div className="sticky md:fixed z-50 bottom-0 w-full bg-white dark:bg-black  md:max-w-lg md:rounded-full md:left-1/2 md:-translate-x-1/2 md:bottom-3 p-2 px-6 border">
+    <div className="sticky md:fixed z-50 bottom-0 w-full bg-black text-white md:max-w-lg md:rounded-full md:left-1/2 md:-translate-x-1/2 md:bottom-3 p-2 px-6 md:border border-black">
       <NavbarContext.Provider value={expanded}>
         <ul className="flex-1 px-3 flex  space-x-4">{children}</ul>
       </NavbarContext.Provider>
