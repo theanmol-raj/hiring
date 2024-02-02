@@ -2,9 +2,10 @@
 "use client";
 
 import { Bookmark } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-interface typeTouchConfig {
+interface typeTouchConfigJob {
+  activeColour : number
   touchStart: number | null;
   touchEnd: number | null;
   minSwipe: number;
@@ -13,18 +14,19 @@ interface typeTouchConfig {
 }
 
 function Job() {
-  const touchConfig: typeTouchConfig = {
+  const touchConfig: typeTouchConfigJob = {
+    activeColour : 0,
     touchEnd: null,
     touchStart: null,
     minSwipe: 40,
     detectedSwipe: false,
     direction: null,
   };
-  const [touch, setTouch] = useState<typeTouchConfig>(touchConfig);
+  const [touch, setTouch] = useState<typeTouchConfigJob>(touchConfig);
 
   const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     const { clientX } = e.targetTouches[0];
-    setTouch((prev: typeTouchConfig) => ({
+    setTouch((prev: typeTouchConfigJob) => ({
       ...prev,
       touchEnd: null,
       touchStart: clientX,
@@ -33,7 +35,7 @@ function Job() {
 
   const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const { clientX } = e.targetTouches[0];
-    setTouch((prev: typeTouchConfig) => ({
+    setTouch((prev: typeTouchConfigJob) => ({
       ...prev,
       touchEnd: clientX,
     }));
@@ -43,12 +45,12 @@ function Job() {
     const isLeftSwipe = distance > minSwipe;
     const isRightSwipe = distance < -minSwipe;
     if (isLeftSwipe || isRightSwipe) {
-      setTouch((prev: typeTouchConfig) => ({
+      setTouch((prev: typeTouchConfigJob) => ({
         ...prev,
         direction: isLeftSwipe ? "left" : isRightSwipe ? "right" : null,
       }));
     } else {
-      setTouch((prev: typeTouchConfig) => ({
+      setTouch((prev: typeTouchConfigJob) => ({
         ...prev,
         direction: null,
       }));
@@ -58,7 +60,7 @@ function Job() {
   const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
     const { direction } = touch;
     if (direction) {
-      setTouch((prev: typeTouchConfig) => ({
+      setTouch((prev: typeTouchConfigJob) => ({
         ...prev,
         detectedSwipe: true,
       }));
@@ -70,6 +72,9 @@ function Job() {
   };
 
   const colours = ["bg-green-200/50", "bg-rose-200/50"];
+  useEffect(()=>{
+    setTouch((prev :typeTouchConfigJob) => ({...prev , activeColour : Math.floor(Math.random() * colours.length) }))
+  },[])
 
   return (
     <div
@@ -92,7 +97,7 @@ function Job() {
     >
       <div
         className={`"  flex-1 md:flex-none md:pb-16 md:px-24 max-h-max rounded-lg ${
-          colours[Math.floor(Math.random() * colours.length)]
+          colours[touch.activeColour]
         }`}
       >
         <div className="flex items-center p-8 px-4 justify-between">
