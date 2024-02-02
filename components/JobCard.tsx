@@ -13,7 +13,7 @@ interface typeTouchConfigJob {
   direction: "left" | "right" | null;
 }
 
-function JobCard() {
+function JobCard({swipe} : {swipe ?: boolean}) {
   const touchConfig: typeTouchConfigJob = {
     activeColour : 0,
     touchEnd: null,
@@ -81,7 +81,7 @@ function JobCard() {
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      className={` w-full h-full p-2 border transform absolute md:relative duration-500 rounded-lg bg-white dark:bg-black/20  flex flex-col   ease-in-out ${
+      className={` w-full h-full p-2 border transform ${swipe && 'absolute'} md:relative duration-500 rounded-lg bg-white dark:bg-black/20  flex flex-col   ease-in-out ${
         touch.detectedSwipe && touch.direction === "left"
           ? " -translate-x-full   overflow-hidden"
           : touch.detectedSwipe && touch.direction === "right"

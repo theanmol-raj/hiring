@@ -169,12 +169,12 @@ export default function Home() {
           </p>
         </div>
         <div className=" grid grid-cols-1 gap-4 md:gap-5 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-          <JobCard/>
-          <JobCard/>
-          <JobCard/>
-          <JobCard/>
-          <JobCard/>
-          <JobCard/>
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
 
         </div>
         <p className=" text-center pt-4  underline text-sm dark:text-gray-500 font-light">See more -</p>

@@ -18,12 +18,12 @@ function page({}: Props) {
 
         </div>
         <div className='overflow-y-scroll md:hidden'>
-          <JobCard/>
-          <JobCard/>
-          <JobCard/>
-          <JobCard/>
-          <JobCard/>
-          <JobCard/>
+          <JobCard swipe/>
+          <JobCard swipe/>
+          <JobCard swipe/>
+          <JobCard swipe/>
+          <JobCard swipe/>
+          <JobCard swipe/>
         </div>
     </div>
   )
