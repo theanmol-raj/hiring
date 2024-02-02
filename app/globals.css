@@ -2,7 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.shape {
+  position: relative;
+  overflow: hidden;
+  height: 80px;
+}
 
+.shape::before {
+  border-radius: 100%;
+  position: absolute;
+  background: rgb(250 204 21);
+  right: -200px;
+  left: -200px;
+  top: -200px;
+  content: '';
+  bottom: 0;
+}
 
 
 @layer base {
